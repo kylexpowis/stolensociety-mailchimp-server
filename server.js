@@ -22,7 +22,7 @@ app.use(
 );
 app.use(express.json());
 
-app.post("/addSubscriber", async (req, res) => {
+app.post("/api/addSubscriber", async (req, res) => {
   const { email } = req.body;
 
   try {
