@@ -3,7 +3,7 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 5000;
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 app.use(cors());
@@ -14,7 +14,12 @@ mailchimp.setConfig({
   server: process.env.MAILCHIMP_API_SERVER,
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://stolen-society-signup.vercel.app",
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.json());
 
 app.post("/addSubscriber", async (req, res) => {
