@@ -8,6 +8,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 app.use(
   cors({
     origin: "https://stolen-society-signup.vercel.app", // actual frontend URL
+    methods: ["GET", "POST"],
   })
 );
 app.use(express.json());
