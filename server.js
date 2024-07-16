@@ -22,6 +22,8 @@ app.get("/", (req, res) => {
   res.send("Mailchimp API is running");
 });
 
+app.options("/api/addSubscriber", cors());
+
 app.post("/api/addSubscriber", async (req, res) => {
   const { email } = req.body;
 
