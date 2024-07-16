@@ -5,18 +5,7 @@ const app = express();
 const port = process.env.PORT || 7000;
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://stolensociety-mailchimp-server-7v8m.vercel.app",
-    ],
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
-
+app.use(cors());
 app.use(express.json());
 
 mailchimp.setConfig({
