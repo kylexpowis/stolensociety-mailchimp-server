@@ -17,8 +17,6 @@ app.get("/", (req, res) => {
   res.send("Mailchimp API is running");
 });
 
-app.options("/api/addSubscriber", cors());
-
 app.post("/api/addSubscriber", async (req, res) => {
   const { email } = req.body;
 
@@ -27,12 +25,14 @@ app.post("/api/addSubscriber", async (req, res) => {
       `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
       {
         email_address: email,
-        status: 'subscribed',
+        status: "subscribed",
       },
       {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${Buffer.from(`anystring:${API_KEY}`).toString('base64')}`,
+          "Content-Type": "application/json",
+          Authorization: `Basic ${Buffer.from(`anystring:${API_KEY}`).toString(
+            "base64"
+          )}`,
         },
       }
     );
