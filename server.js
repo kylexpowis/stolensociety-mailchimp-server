@@ -16,6 +16,10 @@ mailchimp.setConfig({
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Mailchimp API is running");
+});
+
 app.post("/api/addSubscriber", async (req, res) => {
   const { email } = req.body;
 
