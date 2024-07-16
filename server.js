@@ -8,6 +8,10 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "./MainPage.jsx");
+});
+
 app.post("/api/addSubscriber", async (req, res) => {
   try {
     const response = await axios.post(
