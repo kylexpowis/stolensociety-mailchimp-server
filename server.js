@@ -13,9 +13,6 @@ mailchimp.setConfig({
   server: process.env.MAILCHIMP_API_SERVER,
 });
 
-app.use(cors());
-app.use(express.json());
-
 app.get("/", (req, res) => {
   res.send("Mailchimp API is running");
 });
