@@ -23,11 +23,17 @@ app.post("/api/addSubscriber", async (req, res) => {
   const { email } = req.body;
 
   try {
-    const response = await mailchimp.lists.addListMember(
-      process.env.MAILCHIMP_AUDIENCE_ID,
+    const response = await axios.post(
+      `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
       {
         email_address: email,
-        status: "subscribed",
+        status: 'subscribed',
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${Buffer.from(`anystring:${API_KEY}`).toString('base64')}`,
+        },
       }
     );
 
